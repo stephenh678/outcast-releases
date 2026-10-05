@@ -151,6 +151,17 @@
   .platform li strong { color: var(--text); }
   .platform .req { color: var(--dim); font-size: 14px; margin: 14px 0 0; }
 
+  /* phone screens */
+  .phones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 28px; }
+  @media (max-width: 900px) { .phones { grid-template-columns: repeat(2, 1fr); } }
+  .phone { margin: 0; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); background: #f8fafc; box-shadow: 0 20px 50px rgba(0, 0, 0, .45); }
+  .phone figcaption { background: var(--panel); padding: 12px 14px; color: var(--muted); font-size: 13px; }
+  .phone figcaption strong { color: var(--text); }
+  .bubbles { display: flex; align-items: center; gap: 14px; margin: 4px 0 6px; }
+  .bubbles img { width: 64px; height: auto; border-radius: 50%; }
+  .bubbles img.rec { width: 72px; }
+  .bubbles span { color: var(--dim); font-size: 13px; }
+
   /* privacy table */
   table { width: 100%; border-collapse: collapse; font-size: 15px; }
   th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
@@ -341,9 +352,16 @@
 <section id="platforms">
   <div class="wrap">
     <div class="section-head"><div class="kicker">One app, two homes</div><h2>On your phone and on your PC</h2><p>The same styles, words and writing on both, made for how each one is used.</p></div>
+    <div class="phones">
+      <figure class="phone"><img loading="lazy" src="assets/phone-impact.jpg" width="720" height="1392" alt="OutCast on Android, Home: words dictated, typing time saved, a 12-day streak and new badges"><figcaption><strong>Your impact.</strong> Words, time saved, streaks and badges.</figcaption></figure>
+      <figure class="phone"><img loading="lazy" src="assets/phone-home.jpg" width="720" height="1392" alt="OutCast on Android, Home: OutCast is on, with AI writing, battery, writing style, dictation, bubble and history at a glance"><figcaption><strong>At a glance.</strong> Everything that matters, one tap from changing it.</figcaption></figure>
+      <figure class="phone"><img loading="lazy" src="assets/phone-styles.jpg" width="720" height="1392" alt="OutCast on Android, Customize: writing styles, with app icons showing which apps use Work Message and Formal Email"><figcaption><strong>Styles.</strong> App icons show which apps use each one.</figcaption></figure>
+      <figure class="phone"><img loading="lazy" src="assets/phone-customize.jpg" width="720" height="1392" alt="OutCast on Android, Customize: writing styles, app rules, hide the bubble, keep out of History, vocabulary, snippets and voice cues"><figcaption><strong>Customize.</strong> Rules, vocabulary, snippets and voice cues.</figcaption></figure>
+    </div>
     <div class="grid grid-2">
       <div class="platform">
         <h3><svg class="icon-svg" aria-hidden="true"><use href="#i-android"/></svg>Android</h3>
+        <div class="bubbles"><img src="assets/phone-bubble-idle.jpg" width="187" height="187" alt="The bubble on Android, waiting"><img class="rec" src="assets/phone-bubble-recording.jpg" width="259" height="228" alt="The bubble on Android, listening, with its timer"><span>The bubble, waiting and listening.</span></div>
         <ul>
           <li><strong>A floating bubble</strong> appears whenever you're in a text field. Tap, talk, tap. Long-press for styles; drag it onto ✕ to cancel.</li>
           <li><strong>Ask OutCast by name.</strong> “OutCast, make it shorter”, “OutCast, draft a reply saying I'll be late”, “OutCast, what time did Mike say?”</li>
@@ -456,7 +474,7 @@
   // Screenshots open full size. The native dialog handles Esc, focus and returning focus.
   const lightbox = document.getElementById('lightbox');
   const content = lightbox.querySelector('.lightbox-content');
-  for (const img of document.querySelectorAll('.shot img, .card > img')) {
+  for (const img of document.querySelectorAll('.shot img, .card > img, .phone img')) {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'image-button';
